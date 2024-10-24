@@ -118,15 +118,27 @@ The **Rule Engine Project** aims to create a dynamic rule engine capable of eval
 ---
 
 ## 📸 Snapshots
+
+### Create Rule
 ![Create Rule](https://github.com/user-attachments/assets/b6694b63-38af-4fef-b92b-cf0da57b7010)
+
+### Combine Rules
 ![Combine Rules](https://github.com/user-attachments/assets/aaf63288-f91d-48c0-92ac-4757baaeafb6)
+
+### Evaluate Rule
 ![Evaluate Rule](https://github.com/user-attachments/assets/f3bf5174-5a68-49f1-b204-5eab49987bd1)
+
+### Modify Rule
 ![Modify Rule](https://github.com/user-attachments/assets/65960ef5-fa89-441b-bd25-0025bfcb61b5)
+
+### Simple UI
 ![Simple UI](https://github.com/user-attachments/assets/7c4d5228-afa6-4a7c-b5bb-55c9cf8819de)
+
+### Process
 ![Process](https://github.com/user-attachments/assets/08cda11f-cc72-4b46-bd14-4fe0f6228b67)
+
+### Database
 ![Database](https://github.com/user-attachments/assets/a1034a29-336b-4805-9489-08e60ef98db9)
-
-
 
 ---
 
