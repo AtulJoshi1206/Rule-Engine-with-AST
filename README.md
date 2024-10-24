@@ -1,128 +1,145 @@
-# Rule Engine using Abstract Syntax Tree (AST)
+# 🚀 Rule Engine Project
 
-## Objective:
-Develop a simple 3-tier rule engine application (UI, API, Backend) to dynamically determine user eligibility based on attributes like age, department, income, spend, etc. The system leverages an Abstract Syntax Tree (AST) to represent conditional rules, enabling dynamic creation, combination, and modification of these rules.
-
-## Technologies Used:
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB Atlas (for cloud-based storage of rules and metadata)
-- **Data Parsing and Rule Processing**: Abstract Syntax Tree (AST)
-- **API Design**: RESTful API for rule creation, combination, and evaluation
-- **Deployment**: [Specify if cloud or local server]
-
-## Objective:
-The purpose of this application is to:
-- Create conditional rules based on user data.
-- Dynamically combine and modify these rules using AST.
-- Evaluate user data against the rules to determine eligibility.
+## 📚 Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Test Cases](#test-cases)
+- [Snapshots](#snapshots)
+- [Conclusion](#conclusion)
 
 ---
 
-## Data Structure:
-The AST is represented using a tree-based structure where each node in the tree represents an operator (AND/OR) or an operand (conditions).
+## Project Overview
+The **Rule Engine Project** aims to create a dynamic rule engine capable of evaluating user eligibility based on various attributes, such as **age**, **department**, **income**, and **spending**. This project employs an **Abstract Syntax Tree (AST)** for logical operations and rule management.
 
-### Sample Data Structure:
-- **Node fields**:
-  - `type`: String indicating the node type (`"operator"` for AND/OR, `"operand"` for conditions).
-  - `left`: Reference to another Node (left child).
-  - `right`: Reference to another Node (right child for operators).
-  - `value`: Optional value for operand nodes (e.g., number for comparisons).
-
----
-
-## Data Storage:
-We use **MongoDB Atlas** as the storage engine to persist rules and associated metadata.
-
-### Sample MongoDB Schema:
-```json
-{
-  "rule_id": ObjectId("..."),
-  "rule": "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)",
-  "created_at": ISODate("..."),
-  "modified_at": ISODate("...")
-}
-```
+### Objectives
+- **Create Rules**: Define rules using logical operators.
+- **Combine Rules**: Merge multiple rules into a cohesive unit.
+- **Evaluate Rules**: Assess rules against provided JSON data.
+- **Modify Rules**: Update existing rules seamlessly.
 
 ---
 
-## Sample Rules:
-1. **Rule 1**:
-   ```plaintext
-   ((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)
-   ```
-
-2. **Rule 2**:
-   ```plaintext
-   (age > 30 AND department = 'Marketing') AND (salary > 20000 OR experience > 5)
-   ```
+## Features
+✨ **Key Features of the Project**:
+- **Create Rule**: Define rules with complex logical conditions using AND/OR operators.
+- **Combine Rules**: Merge multiple rules into one, optimizing rule evaluation.
+- **Evaluate Rule**: Test rules against specific data inputs for eligibility verification.
+- **Modify Rule**: Easily update existing rules with new expressions.
 
 ---
 
-## API Design:
-The application provides the following API endpoints:
-
-1. **`create_rule(rule_string)`**:
-   - Input: A string representing a rule (e.g., `((age > 30 AND department = 'Sales') AND salary > 50000)`).
-   - Output: Node object representing the corresponding AST.
-
-2. **`combine_rules(rules)`**:
-   - Input: List of rule strings.
-   - Output: Combined AST root node with minimized redundant checks.
-
-3. **`evaluate_rule(json_data)`**:
-   - Input: JSON representing a rule's AST and user data attributes (e.g., `{ "age": 35, "department": "Sales", "salary": 60000 }`).
-   - Output: `True` if the user meets the rule criteria, `False` otherwise.
+## 🛠 Technologies Used
+| Technology         | Description                                           |
+|--------------------|-------------------------------------------------------|
+| **Python**         | Main programming language for backend development     |
+| **Flask**          | Web framework for building the API                   |
+| **MongoDB Atlas**  | NoSQL database for storing rules and evaluations      |
+| **HTML/CSS/JavaScript** | Frontend technologies for user interface          |
+| **Requests**       | Library for API testing and integration               |
 
 ---
 
-## Test Cases:
-
-1. **Test AST Creation**:
-   - Use `create_rule` to generate ASTs from the sample rules and verify the structure.
-
-2. **Test Rule Combination**:
-   - Combine multiple rules using `combine_rules` and validate the resulting AST.
-
-3. **Test Rule Evaluation**:
-   - Test `evaluate_rule` with different user data to ensure the rule evaluates correctly.
-
----
-
-## Bonus Features:
-- **Error Handling**: Handles invalid rule strings or missing operators.
-- **Rule Modification**: Support for modifying existing rules by changing operands, operators, or adding/removing sub-expressions.
-- **Validation**: Ensures that rule attributes exist within a pre-defined catalog.
-- **User-Defined Functions**: Extendable to include user-defined functions for complex conditions (future scope).
-
----
-
-## Screenshots:
-Add screenshots showcasing:
-1. Rule Creation
-   - ![Rule Creation Screenshot](path_to_screenshot1)
-2. Rule Combination
-   - ![Rule Combination Screenshot](path_to_screenshot2)
-3. Rule Evaluation
-   - ![Rule Evaluation Screenshot](path_to_screenshot3)
-
----
-
-## How to Run the Application:
-1. Clone the repository.
-2. Install dependencies:
+## Installation
+### Steps to Set Up the Project:
+1. **Clone the Repository**:
    ```bash
-   npm install
+   git clone <repository-url>
+   cd rule-engine-project
    ```
-3. Set up MongoDB Atlas and update the connection string in `.env`.
-4. Start the server:
+   
+2. **Install Required Packages**:
    ```bash
-   npm start
+   pip install Flask pymongo
    ```
-5. Access the application via `localhost:3000` or the deployed URL.
+   
+3. **Set Up MongoDB Atlas**:
+   - Create a MongoDB Atlas account.
+   - Update connection details in the Flask application.
+
+4. **Run the Flask Application**:
+   ```bash
+   python app.py
+   ```
 
 ---
 
-## License:
-[MIT License]
+## Usage
+1. **Open the GUI** in your web browser.
+2. **Fill out the forms** to:
+   - **Create Rules**: Enter logical expressions and submit.
+   - **Combine Rules**: Provide comma-separated rule IDs.
+   - **Evaluate Rules**: Input a rule ID along with JSON data.
+   - **Modify Rules**: Update existing rules with new expressions.
 
+---
+
+## 📡 API Endpoints
+| Endpoint                    | Method | Description                                                  | Request Body                                      |
+|-----------------------------|--------|--------------------------------------------------------------|--------------------------------------------------|
+| `/create_rule`              | POST   | Creates a new rule based on the provided rule string        | `{ "rule_string": "<rule_expression>" }`        |
+| `/combine_rules`            | POST   | Combines multiple rules into one                             | `{ "rule_ids": ["<rule_id_1>", "<rule_id_2>"] }` |
+| `/evaluate_rule`            | POST   | Evaluates a specific rule against provided data             | `{ "rule_id": "<rule_id>", "data": <json_data> }` |
+| `/modify_rule`              | POST   | Modifies an existing rule with a new expression             | `{ "rule_id": "<rule_id>", "new_rule_string": "<new_rule_expression>" }` |
+
+---
+
+## 🧪 Test Cases
+### Create Rule
+- **Input**: 
+  - Rule String: `(age > 30 AND department = 'Sales')`
+- **Output**: 
+  - Response: `{'ast': '<AST representation>', 'id': '6719b0eaf49d41c79d088beb'}`
+
+### Combine Rules
+- **Input**: 
+  - Rule IDs: `6719b0eaf49d41c79d088beb, 6719b154f49d41c79d088bec`
+- **Output**: 
+  - Response: `{'combined_ast': '<Combined AST representation>', 'id': '6719b196f49d41c79d088bed'}`
+
+### Evaluate Rule
+- **Input**: 
+  - Rule ID: `6719b196f49d41c79d088bed`
+  - Data: `{"age": 35, "department": "Sales", "salary": 60000, "experience": 6}`
+- **Output**: 
+  - Response: `{'result': True}`
+
+### Modify Rule
+- **Input**: 
+  - Rule ID: `6719b0eaf49d41c79d088beb`
+  - New Rule String: `(age > 40 AND department = 'HR')`
+- **Output**: 
+  - Response: `{'message': 'Rule updated successfully'}`
+
+---
+
+## 📸 Snapshots
+![Create Rule](![image](https://github.com/user-attachments/assets/b6694b63-38af-4fef-b92b-cf0da57b7010)
+)
+![Combine Rules](![image](https://github.com/user-attachments/assets/aaf63288-f91d-48c0-92ac-4757baaeafb6)
+)
+![Evaluate Rule](![image](https://github.com/user-attachments/assets/f3bf5174-5a68-49f1-b204-5eab49987bd1)
+)
+![Modify Rule](![image](https://github.com/user-attachments/assets/65960ef5-fa89-441b-bd25-0025bfcb61b5)
+)
+![Simple UI](![WhatsApp Image 2024-10-24 at 08 09 10_42981cd7](https://github.com/user-attachments/assets/7c4d5228-afa6-4a7c-b5bb-55c9cf8819de)
+)
+![Process](![image](https://github.com/user-attachments/assets/08cda11f-cc72-4b46-bd14-4fe0f6228b67)
+)
+![DataBase](![WhatsApp Image 2024-10-24 at 08 10 27_6ae51741](https://github.com/user-attachments/assets/a1034a29-336b-4805-9489-08e60ef98db9)
+)
+
+
+---
+
+## Conclusion
+The **Rule Engine Project** showcases the capability to dynamically create, combine, evaluate, and modify rules through a user-friendly interface. It meets all assignment criteria and serves as a robust solution for eligibility determination based on user-defined conditions.
+
+### 🎉 Thank you for exploring the Rule Engine Project! 
+Feel free to contribute, suggest improvements, or report issues!
+
+---
