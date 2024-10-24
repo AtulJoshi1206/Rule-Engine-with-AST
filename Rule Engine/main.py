@@ -10,7 +10,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 # MongoDB Atlas connection
-client = MongoClient('mongodb+srv://new-user:OGcenXO5y7QMM10o@atulast.kg8pz.mongodb.net/ruleEngine?retryWrites=true&w=majority')
+client = MongoClient('#MONGODB ATLAS Key String')
 db = client.ruleEngine
 rules_collection = db.rules
 
